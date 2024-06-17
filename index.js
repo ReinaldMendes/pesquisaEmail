@@ -3,7 +3,7 @@
 
 const usuarios = [];
 let estado = "menu";
-let nome, idade, email;
+let nome, idade, email, usuario;
 console.log(
   "Escolha uma opção:\n1. Adicionar Usuario\n2. Ver pelo email usuario\n3. Listar usuario\n4. Sair"
 );
@@ -61,17 +61,14 @@ process.stdin.on("data", function (data) {
     let nomeEmail = input;
     let encontrado = false;
     for (let i = 0; i < usuarios.length; i++) {
-      if (usuarios[i].email.toLowerCase() === nomeEmail.toLowerCase()) {
-        console.log("Usuario encontrado com sucesso!");
-        console.log(
-          `Nome: ${usuario.nome}, Idade: ${usuario.idade}, Tamanho: ${usuario.email}`
-        );
-        encontrado = true;
-        break;
+      if (usuarios[i].email == nomeEmail) {
+        usuario = usuarios[i];
       }
     }
-    if (!encontrado) {
-      console.log("Usuario não encontrado!");
+    if (usuario) {
+      console.log(usuario);
+    } else {
+      console.log("Usuario não encontrado");
     }
     estado = "menu";
     console.log(
